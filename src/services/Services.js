@@ -15,6 +15,9 @@ class Services {
     validateUser(data){
         return axios.post(API_BASE_URL+"userApi/validate",data);
     }
+    transactionSave(data){
+        return axios.post(API_BASE_URL+"transactionApi/createOrUpdate",data);
+    }
 }
 
 export default new Services();

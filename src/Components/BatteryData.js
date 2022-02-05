@@ -20,7 +20,7 @@ export default function BatteryData() {
     { field: 'batteryCode', headerName: 'Battery Code', flex: 1  },
     { field: 'batteryVoltage', headerName: 'Battery Voltage' , flex: 1 },
     { field: 'stationName', headerName: 'Station Name' , flex: 1 },
-    { field: 'stationId', headerName: 'Station Id' , flex: 1 },
+    { field: 'stationUniqueId', headerName: 'Station Id' , flex: 1 },
     { field: 'stationAdd', headerName: 'Station Address', flex: 1  },
   {
     field: 'batteryLevel',
@@ -40,7 +40,11 @@ export default function BatteryData() {
     sortable: false,
     renderCell: (params) => {
       const onClick = (e) => {
-        e.stopPropagation(); // don't select this row after clicking
+        e.stopPropagation();
+        var userId = localStorage.getItem("userId");
+        params.row.userId = userId
+        console.log(params.row)
+        Service.transactionSave(params.row)
       };
 
       return <Button variant="contained" onClick={onClick}>Book</Button>;

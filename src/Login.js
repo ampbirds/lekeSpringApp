@@ -53,6 +53,7 @@ export default function Login(props) {
         console.log(res);
         if(res.data.status){
           setshowAlerts(true);
+          localStorage.setItem("userId",res.data.userId);
           setTimeout(() => {
             history.push("/getdata");
           }, 1000);
